@@ -1,0 +1,639 @@
+.navigation {
+    display: inline;
+    font-size: 13px;
+    border-style: none;
+    background-color: transparent;
+    text-decoration: none;
+    color:#414040; 
+    text-decoration: none;
+    /*float: left;
+    */
+
+
+
+}
+.navigation .ul1 {
+    display: inline;
+    color: #414040;
+    list-style-type: none;
+    margin :0;
+    /*padding: 0; */
+    padding-right: 5%;
+    
+    
+}
+.navigation .ul2 {
+     display: inline;
+    color: #414040;
+    list-style-type: none;
+    margin :0;
+    /*padding: 0; */
+    padding-right: 2.5%;
+    
+}
+.navigation li{
+    display: inline;
+    color: #414040
+    text-align: center;
+    margin-right: 1%; 
+
+    line-height: 35px;
+
+
+
+
+}
+.navigation li:not(:first-child){
+    display: inline;
+    border-right: 2px solid rgb(190, 190, 190); 
+    text-align: center;
+    padding: 3px 15px;
+
+}
+
+.navigation a:hover {
+    color: #cf0067;
+    background-color: transparent;
+    text-decoration: none;
+    
+}
+
+.navigation :link, :visited {
+    color:#414040; 
+    background-color: transparent;
+    text-decoration: none;
+     
+
+}
+.navBorder {
+    background-color: red;
+    height: 2px;
+
+}
+.search {
+
+    float: left;
+    border-style: none;
+    text-decoration: none;
+    background-color: transparent;
+    margin : 0;
+    padding:0;
+    width: 100%;
+    /*width: 100%;
+    height: 100%;*/
+    /*border: 2px solid;*/
+    
+
+} 
+
+
+#searchLogo {
+    float: left;
+    width: 13%;
+    height : 1%;
+    margin-left: 16%;
+    margin-top:  5%;
+}
+
+#searchPizza{
+    float:  left;
+    width: 30%;    
+    overflow: hidden;
+}
+#searchText1{
+    position: absolute;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right:20%; 
+    margin-top: 12%;
+    margin-bottom: 0;
+    padding : 0;
+}
+#searchText2{
+    position: absolute;
+    float: right;
+    color: gray;
+    font-size: 14.5px;
+    margin-right: 22.8%; 
+    margin-top: 16%;
+}
+
+.searchBar {
+    float: left;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 10%;
+
+    padding-bottom: 10px;
+    width:  750px;
+    height: 70px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    border-radius:8px;
+    -webkit-box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.14);
+    -moz-box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.14);
+    box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.14);
+}
+
+.selectBar {
+    float: left;
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 54%;
+    margin-top: 2.5%;
+    border-color: silver;
+    width: 150px;
+    height: 60px;
+    font-size: 15px;
+}
+
+
+.inner-addon { 
+    position: absolute; 
+    float: left;
+    color:silver;
+    margin-right:11.5%;
+    margin-top: 0.7%;
+    width : 350px;
+    height: 60px;
+}
+
+.inner-addon .fa-map-marker-alt{
+  position: absolute;
+  float: left;
+  font-size: 20px;
+  color: #DCDCDC;
+  background-color: transparent;
+  padding-top: 24px;
+  padding-right:15px;
+  pointer-events: none;
+}
+
+.SearchInput{
+    position: absolute;
+    float: left;
+    padding-right: 11%;
+    font-size: 15px;
+    width : 490px;
+    height: 55px;
+    border-radius:0 10px 10px 0px;
+    border-style: none;
+    border: 0.5px solid ;
+
+
+}
+
+
+#searchIcon {
+    position: absolute;
+    float: left;
+    width: 58px;
+    height: 57px; 
+    margin: 0%;
+    border: 0%;
+
+    padding-right: 151%;
+
+}
+#lastSearchedItem{
+
+    position: absolute;
+    float: right; 
+    margin-top: 6.3%;
+    margin-right: -23%;
+    /*margin-left: 80%;*/
+    font-size: 13px;
+    color: gray;
+    text-decoration: underline;
+
+}
+
+.fa-history{
+  position: absolute;
+  float: left;
+  font-size: 11px;
+  background-color: transparent;
+  padding-top: 6.5%;
+  text-decoration :underline;
+  margin-right:-24%;
+  color: gray;
+  pointer-events: none;
+}
+.information_table{
+    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 123px 10.5px;
+    margin-top: 20px;
+    border-top: 2%;
+    color: #A9A9A9;
+
+    
+    float: left;
+    
+}
+
+    .information_table .firsRow{
+        display: inline-block;
+        border-style: none;
+        text-decoration: none;
+
+    }
+
+    .information_table .secondRow {
+        height: 120px;
+        width:350px;
+        /*border-spacing: 10px 25px;*/
+
+        border: 1px solid #dfdfdf;
+        background-color: #ffffff;
+        
+        -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.14);
+        -moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.14);
+        box-shadow: 0px 0px 10px 4px rgba(0,0,0,0.14);
+    }
+
+    .secondRow  .imageElements {
+        position: relative;
+        float: right;
+        padding-right:4%;
+        padding-top: 4%;
+        width: 70px;
+        height: 70px;
+
+}
+.secondRow p {
+    padding-right: 90px;
+    color: #C0C0C0;
+    font-size:13px;
+}
+
+
+    
+#top_restaurants_header {
+    float: left;
+    /*font-weight: bold;*/
+    margin-top: 7%;
+    margin-left: 28%;
+    color: black;
+    font-size: 27px;
+
+
+}
+
+.top_restaurant_grid {
+    display: grid;
+    grid-column-gap: 70px;
+    grid-template-columns: auto auto auto;
+    padding: 100px;
+    margin-left: 0%;
+    
+}
+
+.restaurant {
+    width: 350px;
+    height: 350px ;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.14);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.14);
+    margin: 0%;
+    border: 0%;
+    padding: 0%;
+    margin-top:30%;
+    font-size: 18px;
+    text-align: center;
+    cursor:pointer;
+}
+.top_restaurant_grid :hover {
+   
+    -webkit-box-shadow: 2px 2px 10px 3px rgba(0,0,0,0.14);
+    -moz-box-shadow: 2px 2px 10px 3px rgba(0,0,0,0.14);
+    box-shadow: 2px 2px 10px 3px rgba(0,0,0,0.14);
+}
+.restaurant :hover:not(.pic-rest){
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.14);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.14);
+}
+.restaurant h3 {
+    margin-top :3%;
+}
+.restaurant img {
+    margin-top: 8%;
+}
+.top_restaurant_grid :hover .restaurantButton{
+    background-color:#cf006815;
+
+}
+
+.pic-rest{
+    all: revert;
+    height: 80px;
+    width: 80px;
+
+    margin-block-start: 5%;
+    -webkit-box-shadow: 1px 1px 10px 2px rgba(214,214,214,1);
+    -moz-box-shadow: 1px 1px 10px 2px rgba(214,214,214,1);
+    box-shadow: 1px 1px 10px 2px rgba(214,214,214,1);
+    border-radius: 5px;
+}
+.info { 
+    margin-block-start: 4%;
+    color: #6b6b6b;
+    font-weight:normal
+}
+.info2 { 
+    margin-block-start: 5%;
+    color: #8b8b8b;
+    font-weight:normal
+    margin-bottom:30%;
+}
+.restaurantButton {
+    background-color:#ffffff;
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    border-radius:20px;
+    border:1px solid #cf0068;
+    display:inline-block;
+    cursor:pointer;
+    color:#cf0068;
+    font-family:Impact;
+    font-size:13px;
+    padding:8px 27px;
+    margin-block-start: 8%;
+    text-decoration:none;
+}
+.restaurantButton:hover {
+    background-color:#cf006815;
+}
+.restaurantButton:active {
+    position:relative;
+}
+
+.voteQuantity{
+    margin-top: 20%;
+    color: #C0C0C0;
+    font-size:10px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+     float:unset; 
+    text-align: center;
+    height: 20px;
+    width: 110px;
+    /* padding: 0 10px; */
+    /* margin: auto; */
+    /* width: 75%; */
+    /* padding: 10px; */
+    
+}
+
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:20px;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:12px;
+    color:#ccc;
+    padding-top: 2px;
+    padding-left: 2px;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate:hover,
+.rate:hover ~ .rating-star,
+.rate:checked ~ .rating-star {
+    background-position: 0 0;
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+.gs {
+    display: inline;
+    align-content: center;
+    text-align: center;
+}
+.gs pre {
+    color: #ffc700;  
+    font-size: 14px;
+    padding-top: 10%;
+}
+.gss{
+    display: inline;
+    align-content: center;
+    text-align: center;
+}
+/*.gss pre {
+    color: red;
+    font-size: 12666px;
+    padding-top: 15%;
+    padding-left: 25%;
+}*/
+.star {
+    display: grid;
+    grid-column-gap: 0px;
+    grid-template-columns:  repeat(5, 1fr);
+    justify-content: space-evenly;
+    padding-left: 70px;
+    padding-right: 60px;
+    padding-top: 0%;
+  }
+  .ls {
+    display: inline;
+    align-content: center;
+    text-align: center;
+  }
+  .ls pre{
+    background-color: rgb(204, 204, 204);
+    font-size: 1px;
+    margin-block-start: 50%;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+.pizza_back_img{
+    margin = 0;
+    margin-left: -150px;
+    padding = 0;
+    float: left;
+    width:110%;
+}
+
+
+
+/*grid container*/
+
+.grid_header{
+    position: absolute;
+    font-size: 20px;
+    color: black;
+    margin : 0;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+.best_restuarnats_grid {
+    position: absolute;
+    max-width: 600px;
+    display: grid;
+    grid-column-gap: 50px;
+    grid-template-columns: auto auto auto auto;
+    padding-top: 1px;
+    margin-left: 0%;
+    margin-top:5%;
+    margin-right:10%;
+    
+}
+
+
+.restItem {
+    width: 90px;
+    height: 120px ;
+    background-color: transparent;
+    /*-webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.14);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.14);*/
+    margin: 0%;
+    border: 0%;
+    padding: 0%;
+    margin-top:70%;
+    font-size: 18px;
+    text-align: center;
+    cursor:pointer;
+
+}
+
+.restItem img{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    border: 0.5px solid gray;
+}
+.restItem p{
+    position: relative;
+    color: #414040;
+    font-size: 12px;
+
+
+}
+
+.restItem:hover img{
+    -webkit-box-shadow: 1px 1px 10px 4px rgba(220, 220, 220);
+    -moz-box-shadow: 1px 1px 10px 4px rgba(220, 220, 220);
+    box-shadow: 1px 1px 10px 4px rgb(220, 220, 220);
+}
+/*foods*/
+
+.foods{
+
+}
+
+.foods h1{
+    font-size: 32px;
+    position: relative;
+    margin :0;
+    margin-right: 40%;
+    margin-top: 55%;
+    color: #414040;
+}
+
+.foods p {
+    font-size: 25px;
+    position: relative;
+    margin :0;
+    margin-right: 30%;
+    margin-top: 2%;
+    color: #414040;
+
+}
+
+
+.foods_grid {
+    position: absolute;
+    max-width: 800px;
+    display: grid;
+    /*grid-column-gap: 1px;*/
+    grid-template-columns: auto auto auto auto;
+    margin-left: 0%;
+    margin-top:0%;
+    margin-right:10%;
+    background-color:white;
+    
+}
+
+
+.foodItem {
+    width: 250px;
+    height: 250px;
+    margin: 0%;
+    border: 0%;
+    padding: 0%;
+    margin-top:0%;
+    font-size: 18px;
+    text-align: center;
+    cursor:pointer;
+}
+
+
+
+.foodItem img{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+    border: 0.5px solid gray;
+    filter: brightness(50%);
+
+}
+.foodItem .p1{
+    position: absolute;
+    color: white;
+    margin: 0;
+    margin-top: -13%;
+    margin-right: 1%;
+    font-size: 24px;
+
+}
+ .foodItem .p2{
+     position: absolute;
+    color: white;
+    margin: 0;
+    margin-top: -6%;
+    margin-right: 1%;
+    font-size: 15px;
+}
+
+.foodItem:hover .p1{
+    
+    margin-top: -14%;
+}
+.foodItem:hover .p2{
+    
+    margin-top: -7%;
+}
