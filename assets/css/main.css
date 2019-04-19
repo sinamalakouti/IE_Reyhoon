@@ -480,10 +480,13 @@
 
 .pizza_back_img{
     margin = 0;
-    margin-left: -150px;
+    /*margin-left: -150px;*/
+    object-fit: cover;
     padding = 0;
     float: left;
     width:110%;
+    height: 100%;
+    object-position: -150px  ;
 }
 
 
@@ -496,6 +499,7 @@
     color: black;
     margin : 0;
     margin-top: 5%;
+    font-weight: bold;
     margin-right: 10%;
 }
 .best_restuarnats_grid {
@@ -533,8 +537,8 @@
     position: relative;
     width: 80px;
     height: 80px;
-    border-radius: 5px;
-    border: 0.5px solid gray;
+    border-radius: 4px;
+    border: 0.05px solid silver;
 }
 .restItem p{
     position: relative;
@@ -704,3 +708,234 @@
 }
 
 /*footer*/
+
+.main_footer {
+    margin-top: 17%;
+    /*position: absolute;*/
+    background-color:rgb(32,32,32);
+    width: 100%;
+    height: 520px;
+}
+.main_footer .col1 {
+    background-color: transparent;
+    position: absolute;
+    color: #A9A9A9;
+    margin-top: 7%;
+    margin-right: 10%;
+    margin-left: 68%;
+    font-size: 13px;
+    line-height: 25pt;
+}
+.main_footer .col1 a{
+    color: rgb(75,121,209);
+    text-decoration: none;
+}
+
+.main_footer .col2 {
+    background-color: transparent;
+    position: absolute;
+    /*color: #A9A9A9;*/
+    margin-top: 4%;
+    margin-right: 37%;
+    margin-left: 6%;
+    font-size: 13px;
+    
+
+}
+.main_footer .col2 hr.thin {
+height: 3px;
+border: 0;
+color: #333;
+background-color: purple;
+width: 150px;
+}
+.main_footer .col2 h1{
+    /*display: inline;*/
+    margin-top: 23%;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+.footer_list {
+    margin-top: 20%;
+    background-color: transparent;
+    color: #A9A9A9;
+    text-decoration: none;
+    list-style-type: none;
+}
+.footer_list_link {
+    color: #A9A9A9;
+    line-height: 25pt;
+    text-decoration: none;
+}
+.footer_list_apps{
+
+}
+
+
+.main_footer .col3 {
+    background-color: transparent;
+    position: absolute;
+    /*color: #A9A9A9;*/
+    margin-top: 4%;
+    margin-right: 52%;
+    margin-left: 6%;
+    font-size: 13px;
+    
+
+}
+.main_footer .col3 hr.thin {
+height: 3px;
+border: 0;
+color: #333;
+background-color: rgb(202,0,94);
+width: 150px;
+}
+.main_footer .col3 h1{
+    /*display: inline;*/
+    margin-top: 23%;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/**/
+.main_footer .col4 {
+    background-color: transparent;
+    position: absolute;
+    /*color: #A9A9A9;*/
+    margin-top: 4%;
+    margin-right: 67%;
+    margin-left: 6%;
+    font-size: 13px;
+    
+
+}
+.main_footer .col4 hr.thin {
+height: 3px;
+border: 0;
+color: #333;
+background-color: rgb(255,6,19);
+width: 150px;
+}
+.main_footer .col4 h1{
+    /*display: inline;*/
+    margin-top: 23%;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.main_footer .col5 {
+    background-color: transparent;
+    position: absolute;
+    /*color: #A9A9A9;*/
+    margin-top: 4%;
+    margin-right: 82%;
+    margin-left: 6%;
+    font-size: 13px;
+    
+
+}
+.main_footer .col5 hr.thin {
+height: 3px;
+border: 0;
+color: #333;
+background-color: rgb(255,195,9);
+width: 150px;
+}
+.main_footer .col5 h1{
+    /*display: inline;*/
+    margin-top: 23%;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.footer-app1{
+    background:url(../images/google-play-dark.png) no-repeat;
+    cursor:pointer;
+    /* border:none; */
+    border: 1px solid transparent;
+    border-color:#4a4a4a;
+    border-radius: 5px;
+    width: 130px; 
+    height:40px;
+    background-size: cover;
+}
+.footer-app2{
+    background:url(../images/sib-app-dark.png) no-repeat;
+    cursor:pointer;
+    /* border:none; */
+    border: 1px solid transparent;
+    border-color:#4a4a4a;
+    border-radius: 5px;
+    width: 130px; 
+    height:40px;
+    background-size: cover;
+}
+.footer-app3{
+    background:url(../images/cafebazaar-dark.png) no-repeat;
+    cursor:pointer;
+    /* border:none; */
+    border: 1px solid transparent;
+    border-color:#4a4a4a;
+    border-radius: 5px;
+    width: 130px; 
+    height:40px;
+    background-size: cover;
+}
+
+ .logos{
+    display: inline;
+    position: relative;
+    background-color: transparent;
+    top: 60%;
+    right: 40%;
+    height: 10%;
+}
+
+.footer2{
+    position: absolute;
+    background-color: rgb(25,25,25);
+    width: 100%;
+    height: 10%;
+}
+
+.footer2 p{
+    direction: ltr;
+    position: relative;
+    color: #A9A9A9;
+    left: 80%;
+    top: 70%;
+    font-size: 13px;
+}
+
+
+
+
+.footer2 .brands_grid {
+    position: absolute;
+    max-width: 1000px;
+    display: grid;
+
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    margin-left: 0%;
+    margin-top:1.5%;
+    margin-right:75%;
+    color: rgb(155,155,155);
+    font-size: 0.7em;
+    
+    background-color:transparent;
+    
+}
+
+
+
+
