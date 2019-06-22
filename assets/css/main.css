@@ -687,7 +687,7 @@
     margin: 0;
     margin-top: -6%;
     margin-right: 1%;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .foodItem:hover .p1{
@@ -868,9 +868,8 @@ width: 150px;
     margin-right: 67%;
     margin-left: 6%;
     font-size: 13px;
-    
-
 }
+
 .main_footer .col4 hr.thin {
 height: 3px;
 border: 0;
@@ -972,9 +971,6 @@ width: 150px;
     top: 70%;
     font-size: 13px;
 }
-
-
-
 
 .footer2 .brands_grid {
     position: absolute;
