@@ -16,6 +16,12 @@ app.use(express.json());
 
 //routers
 const foodRouter = require("./routes/foodRouter.js");
-app.use("/api/foods", foodRouter);
+const restaurantsRouter = require("./routes/restaurantRouter.js");
+app.get("/", (req, res) =>{
+  res.send('Hello Express')
+});
+
+//app.use("/api/foods", foodRouter);
+app.use("/api/restaurants", restaurantsRouter);
 
 app.listen(port, () => console.log(`listening on port ${port}!`));
