@@ -34,11 +34,7 @@ restaurantRouter
                 for ( i  in  rests){
                     for ( c in rests[i]["categories"]){
                         if ( (rests[i]['categories'])[c]['name'] == categories[cat]){
-                            //console.log("no deep shit")
                             result.push(rests[i]);
-                        }else{
-                           // console.log("HALLO");
-                            //console.log((rests[i]['categories'])[c]['name']);
                         }
                     }
                 }
