@@ -20,7 +20,6 @@ restaurantRouter
         restaurant.model.find({'address.area': req.query.area} , (err, rests) =>{
             if ( err){
                 res.send(err);
-                console.log("errrror shiiit");
             }
                 
             var result = [];

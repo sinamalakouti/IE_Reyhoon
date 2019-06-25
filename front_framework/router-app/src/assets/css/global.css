@@ -1,0 +1,16 @@
+*{
+    direction: rtl ;    
+
+}
+body {
+
+    margin: 0;
+    padding: 0;
+    text-align: float;
+    /* background-color: rgb(251,251,251); */
+    margin-block-start: 1%;
+    /* color: #414040; */
+
+
+}
+
