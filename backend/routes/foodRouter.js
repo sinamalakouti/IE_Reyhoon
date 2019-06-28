@@ -1,5 +1,6 @@
 const express = require("express");
 const food = require("../models/food.js");
+var cors = require('cors');
 
 const foodRouter = express.Router();
 

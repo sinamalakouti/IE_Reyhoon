@@ -109,7 +109,6 @@
 </script>
 
 <style>
-@import '../assets/css/global.css';
 /* @import '../assets/css/main.css'; */
 
 .links{

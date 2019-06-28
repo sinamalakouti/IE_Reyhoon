@@ -5,6 +5,12 @@ const comment = require("../models/userComment.js");
 const category = require("../models/category.js");
 const food = require("../models/food.js");
 const address = require("../models/address.js");
+var cors = require('cors');
+
+var corsOptions = {
+  origin: 'http://localhost:8080',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 
 
@@ -24,6 +30,8 @@ restaurantRouter.use (function (req, res, next) {
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
+
+    
     next();
 })
   .get("/", (req, res) => {
@@ -70,8 +78,9 @@ restaurantRouter.use (function (req, res, next) {
         });
     }
 })
-    .get('/area/:area',   (req, res) => {
+    .get('/area/:area', cors(corsOptions),  (req, res) => {
         console.log("FUUdafdsffsa   CK")
+
             
             restaurant.model.find({'address.area': {$regex: req.params.area}}, 'address.area', (err, result)=>{
                 if ( err)
@@ -80,7 +89,7 @@ restaurantRouter.use (function (req, res, next) {
                     let final_areas = [];
                     for( i in  result){
                         if ( !final_areas.includes((result[i]['address'])['area']))
-                                final_areas.push((result[i]['address'])['area']);
+                                final_areas.push((result[i]['address'])['addressLine']);
                     }
                     
                     res.send(final_areas);

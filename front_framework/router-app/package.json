@@ -1,13 +1,14 @@
 {
   "name": "router-app",
   "version": "1.0.0",
+  "private": true,
   "description": "A Vue.js project",
   "author": "sina <s.malakouti2015@aut.ac.ir>",
-  "private": true,
   "scripts": {
+    "build": "node build/build.js",
+    "lint": "vue-cli-service lint",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "build": "node build/build.js"
+    "start": "npm run dev"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -17,17 +18,23 @@
     "jquery": "^3.4.1",
     "mdbvue": "^5.5.1",
     "portal-vue": "^2.1.5",
+    "serve": "^11.0.2",
     "shabnam-font": "^4.0.0",
     "vue": "^2.6.10",
+    "vue-dynamic-star-rating": "^1.0.7",
     "vue-material": "^1.0.0-beta-11",
     "vue-material-rtl": "^0.11.4",
     "vue-multiselect": "^2.1.6",
     "vue-router": "^3.0.1",
-    "vue-select": "^3.1.0"
+    "vue-select": "^3.1.0",
+    "vue-star-rating": "^1.6.1"
   },
   "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
+    "babel-eslint": "^10.0.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -38,6 +45,8 @@
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
@@ -62,13 +71,13 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  }
 }

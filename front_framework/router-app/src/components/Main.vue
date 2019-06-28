@@ -22,17 +22,20 @@
                     </mdb-col>
                     <mdb-col  md="8" class=" pt-2 pb-2 pr-1 pl-0" >
                         <div class="myinput text-right"  >
-                             <multiselect  class="text-right" v-model="selectedAreas" id="ajax" label="name" track-by="code" 
-                             placeholder="مثلا نیاوران" open-direction="bottom" :options="areas" :multiple="true" 
-                             :searchable="true" :loading="isLoading" :internal-search="false" :clear-on-select="false" 
-                             :close-on-select="false" :options-limit="300" :limit="3" :limit-text="limitText" 
-                             :max-height="600" :show-no-results="false" :hide-selected="true" @search-change="asyncFind">
-                             
-                                   <span class="arrow fa fa-map-marker-alt pt-3" style="color:#DCDCDC" slot="caret" ><i></i></span>                   
-                            <!-- <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template> -->
-                                <!-- <template slot="caret"><i class="fa fa-map-marker-alt"></i> </template> -->
+                             <multiselect  class="text-right" v-model="selectedAreas" id="ajax" label="" track-by="code" 
+                             placeholder="مثلا نیاوران" open-direction="bottom" :options="areas" :multiple="false" 
+                             :searchable="true" :loading="isLoading" :internal-search="false" :clear-on-select="true" 
+                             :close-on-select="true" :options-limit="300" :limit="3" :limit-text="limitText" 
+                             :max-height="600" :show-no-results="false" selectedLabel=""  selectLabel="" :hide-selected="false" @search-change="asyncFind">
+                             <template slot="tag" slot-scope="{ option, remove }"><span class="custom__tag"><span>{{ option }}</span><span class="custom__remove" @click="remove(option)">❌</span></span></template>
+                                                                <span class="arrow fa fa-map-marker-alt pt-3" style="color:#DCDCDC" slot="caret" ><i></i></span>                   
+
+    <template slot="clear" slot-scope="props">
+      <div class="multiselect__clear" v-if="selectedAreas" @mousedown.prevent.stop="clearAll(props.search)"></div>
+    </template><span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
+
                                 </multiselect>
-                                  <!-- <pre class="language-json"><code>{{ value1  }}</code></pre> -->
+                                  <!-- <pre class="language-json"><code>{{ selectedAreas  }}</code></pre> -->
 
                         </div>
                           
@@ -113,13 +116,13 @@ export default {
     return {
       
       selectedAreas: [],
-      areas: [],
+      areas: ["iran","afgahn", "sag", "tof"],
       isLoading: false,
 
       value1: 'تهران',
       value2: 'مشهد',
       options1: ['تهران', 'مشهد', 'اصفهان']
-    // options: 
+    // areas: [
     //     { name: 'Vue.js', language: 'JavaScript' },
     //     { name: 'Adonis', language: 'JavaScript' },
     //     { name: 'Rails', language: 'Ruby' },
@@ -140,16 +143,16 @@ export default {
       HTTP.get('http://localhost:3000/api/restaurants/area/jor',
    { useCredentails: true })    
       .then(response => {
-            alert("shit")
-            alert(response.data);
             this.isLoading = false;
 
       this.areas = response.data;
+      this.areas = ['jordan', 'mahyar']
+      this.selectedAreas = this.areas;
+      alert(this.areas)
     })
     .catch(e => {
-        alert(response.data);
-      this.isLoading = false;
-      this.areas = response.data;
+        alert("HIddd");
+      this.errors.push(e)
     })
       // ajaxFindArea(query).then(response => {
       //   this.areas = response
@@ -157,6 +160,7 @@ export default {
       // })
     },
     clearAll () {
+      alert("hallo")
       this.selectedAreas = []
     }
   }
@@ -342,6 +346,20 @@ export default {
     border-width: 0px !important;
     outline: none;
 }
+.myinput .multiselect {
+  color: #adadad;
+}
+
+.myinput .multiselect__option--highlight:after {
+  content: attr(data-select);
+  /* background: red; */
+  color: #adadad;
+}
+
+.myinput .multiselect__element:hover {
+  color: #adadad !important;
+  background-color: #e0e0e0 !important;
+}
 .search-icon {
     background:url(../assets/images/search.png) no-repeat; 
     min-height: 60px; 
@@ -374,10 +392,54 @@ font-size: 18px;
 /* padding-bottom: 0; */
 
 }
-.myinput .multiselect__select{
+.myinput .multiselect__option--highlight{
+  color :#adadad;
+  background: #ededed	;
+  outline: none;
+
+}
+
+
+ .mySelect .multiselect__option--highlight {
+  background: #ededed	;
+  outline: none;
+  color: rgb(85, 63, 63)(85, 63, 63);
+
+}
+ .myinput .multiselect__option--highlight:after {
+  content: attr(data-select);
+  background: #ededed;
+
+  color: #adadad;
+}
+.myinput .multiselect__option--selected {
+  background: white;
+  color: #adadad;
+
+    font-weight: normal;
+}
+.myinput .multiselect__option--selected:after {
+  
+  /* background: #ededed; */
+
+  color: #adadad;
+    font-weight: normal;
+}
+.myinput .multiselect__option--selected.multiselect__option--highlight {
+  /* background: #ededed; */
+  color: #adadad;
+}
+/* .myinput .multiselect__option--highlight {
+  background: #ededed	;
+  outline: none;
+  color: rgb(85, 63, 63)(85, 63, 63);
+
+} */
+/* .myinput .multiselect__select{
   padding-top: 3.4%;
   cursor:pointer;
-}
+} */
+
 
  .icon{
   padding-top: 40000px;
@@ -480,11 +542,11 @@ font-size: 18px;
   z-index: 0;
 }
 
-.multiselect__input::placeholder {
+.mySelect .multiselect__input::placeholder {
   color:gray;
 }
 
-.multiselect,
+.mySelect .multiselect,
 .multiselect__input,
 .multiselect__single {
   
