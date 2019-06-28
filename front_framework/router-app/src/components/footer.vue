@@ -1,7 +1,8 @@
 <template>
   <!-- Footer -->
+  
   <mdb-footer style="backgroundColor:rgb(32,32,32);" class="page-footer font-small pt-4 mt-4 ">
-    <mdb-container class="text-center">
+    <mdb-container class="text-right">
       <mdb-row>
         <mdb-col md="4" class="mt-5">
           <!-- <hr class="text-uppercase mb-5 mt-3"/> -->
@@ -13,23 +14,25 @@
             
           
         </mdb-col>
-        <mdb-col md="2" >
-          <hr class="deep-purple accent-2 mb-2 mt-3 d-inline-block mx-auto" style="width: 160px ; height:2px; " />
-          <h5 style="font-size:14px;" class=" mb-4 mt-0 font-weight-normal text-right">تماس با ریحون</h5>
+        <mdb-col md="2" class="align-content-sm-center"> 
+          <div class="align-content-sm-center">
+            <hr class="deep-purple accent-2 mb-2 mt-3 d-inline-block mx-auto " style="width: 160px ; height:2px; " />
+          <h5 style="font-size:14px;" class=" mb-4 mt-0 font-weight-normal  ">تماس با ریحون</h5>
           <ul class="list-unstyled pr-0 text-right"  >
-            <li ><a  class="links text-right" href="#" style="text-align:right !important;">درباره‌ریحون</a></li>
+            <li ><a  class="links text-right" href="#" >درباره‌ریحون</a></li>
             <li><a class="links text-right" href="#!">تماس باما</a></li>
             <li><a class="links text-right"  href="#!">وبلاگ ریحون</a></li>
             
           </ul>
+          </div>
         </mdb-col>
         
         <!-- <hr class="clearfix w-100 d-md-none" /> -->
-        <mdb-col md="2">
+        <mdb-col md="2" class="text-right">
           <hr class=" accent-2 mb-2 mt-3 d-inline-block mx-auto text-right" style="width: 160px ; height:2px; backgroundColor: rgb(202,0,94);" />
           <h5 style="font-size:14px;" class="text-uppercase mb-4 mt-0 font-weight-normal text-right">رستوران‌ها</h5>
           <ul class="list-unstyled text-right pr-0">
-            <li ><a class="links text-right"  href="#!">ثبت رستوران</a></li>
+            <li class="text-right"><a class="links text-right"  href="#!">ثبت رستوران</a></li>
             
           </ul>
         </mdb-col>
@@ -76,11 +79,11 @@
         </mdb-col>
         <mdb-col md="6">
         <ul class="list-unstyled list-inline text-left  ml-5">
-        <li class="list-inline-item"><a class="btn-floating btn-sm btn-fb mx-1"><i class="fab fa-telegram-plane fa-2x"> </i></a></li>
-        <li class="list-inline-item"><a class="btn-floating btn-sm btn-tw mx-1"><i class="fab fa-facebook-f fa-2x brand"> </i></a></li>
-        <li class="list-inline-item"><a class="btn-floating btn-sm btn-gplus mx-1"><i class="fab fa-twitter fa-2x brand"> </i></a></li>
-        <li class="list-inline-item"><a class="btn-floating btn-sm btn-li mx-1"><i class="fab fa-instagram fa-2x brand"> </i></a></li>
-        <li class="list-inline-item"><a class="btn-floating btn-sm btn-dribbble mx-1"><i class="fab fa-google-plus-g fa-2x brand"> </i></a></li>
+        <li class="list-inline-item"><a href="#" class="btn-floating btn-sm btn-fb mx-1" style="color:#A9A9A9"><i class="fab fa-telegram-plane fa-2x"> </i></a></li>
+        <li class="list-inline-item"><a href="#" style="color:#A9A9A9" class="btn-floating btn-sm btn-tw mx-1"><i class="fab fa-facebook-f fa-2x brand"> </i></a></li>
+        <li class="list-inline-item"><a href="#" style="color:#A9A9A9" class="btn-floating btn-sm btn-gplus mx-1"><i class="fab fa-twitter fa-2x brand"> </i></a></li>
+        <li class="list-inline-item"><a href="#" style="color:#A9A9A9" class="btn-floating btn-sm btn-li mx-1"><i class="fab fa-instagram fa-2x brand"> </i></a></li>
+        <li class="list-inline-item"><a href="#" style="color:#A9A9A9" class="btn-floating btn-sm btn-dribbble mx-1"><i class="fab fa-google-plus-g fa-2x brand"> </i></a></li>
       </ul>
         </mdb-col>
       </mdb-row>

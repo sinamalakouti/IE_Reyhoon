@@ -14,6 +14,6 @@ export default {
 h3 {
   font-weight: normal;
   padding-top: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 300px;
 }
 </style>

@@ -47,9 +47,7 @@ export default {
     display: inline;
     color: #414040;
     list-style-type: none;
-    margin :0;
-    /*padding: 0; */
-    padding-right: 5%;
+    
     
     
 }

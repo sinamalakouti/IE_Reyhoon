@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const port = 3000;
-
+	
 mongoose.connect("mongodb://localhost/web_ta", { useNewUrlParser: true });
 const db = mongoose.connection;
 
@@ -11,8 +11,10 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
   console.log("DB connection alive");
 });
+var cors = require('cors');
 
 app.use(express.json());
+app.use(cors())
 
 //routers
 const foodRouter = require("./routes/foodRouter.js");

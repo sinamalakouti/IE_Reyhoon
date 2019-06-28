@@ -10,7 +10,22 @@ const address = require("../models/address.js");
 
 const restaurantRouter = express.Router();
 
-restaurantRouter
+restaurantRouter.use (function (req, res, next) {
+            console.log("khar khar khar");
+
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080/#/');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+})
   .get("/", (req, res) => {
       console.log("HI");
   
@@ -56,6 +71,7 @@ restaurantRouter
     }
 })
     .get('/area/:area',   (req, res) => {
+        console.log("FUUdafdsffsa   CK")
             
             restaurant.model.find({'address.area': {$regex: req.params.area}}, 'address.area', (err, result)=>{
                 if ( err)
@@ -66,6 +82,7 @@ restaurantRouter
                         if ( !final_areas.includes((result[i]['address'])['area']))
                                 final_areas.push((result[i]['address'])['area']);
                     }
+                    
                     res.send(final_areas);
 
                 }

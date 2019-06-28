@@ -35,6 +35,10 @@ module.exports = {
 
     cssSourceMap: true
   },
+  devServer: {
+    proxy: 'http://localhost:3000/',
+},
+
 
   build: {
     // Template for index.html
