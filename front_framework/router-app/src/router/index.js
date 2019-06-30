@@ -6,7 +6,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbvue/build/css/mdb.css';
 import mainPage from '@/components/Main'
 import restSearch from '@/components/restSearch'
-
+import myRestaurantpage from '@/components/restaurantPage'
 
 Vue.use(Router)
 Vue.use(BootstrapVue)
@@ -17,7 +17,13 @@ export default new Router({
     {
       path: '/',
       name: 'mainPage',
-      component: mainPage
+      component:myRestaurantpage
+    },
+
+    {
+      path: '/restSearch',
+      name: 'restSearch',
+      component:restSearch
     }
   ]
 })

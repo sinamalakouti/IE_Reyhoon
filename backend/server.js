@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const port = 3000;
+const port = 4000;
 	
 mongoose.connect("mongodb://localhost/web_ta", { useNewUrlParser: true });
 const db = mongoose.connection;
