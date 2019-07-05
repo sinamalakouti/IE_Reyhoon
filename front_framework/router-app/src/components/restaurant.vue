@@ -1,11 +1,16 @@
 <template>
 
-       <div  class="rest_container hoverable  ml-0" v-bind:class="{'open-rest':isopen ,'close-rest': !isopen}">  
+       <div 
+        v-on:click="navigate"
+        class="rest_container hoverable  ml-0" v-bind:class="{'open-rest':isopen ,'close-rest': !isopen}">  
         <div class="  pt-3 pr-0 pl-0  ">
             <mdb-container class=" ml-0 pr-0 pl-2 mr-0">
                 <mdb-row  class="text-lg-right text-md-right text-right mr-0 ml-0 mt-0 mb-0 pr-2 ">
                   <mdb-col md="3" class=" pl-0 ml-0 pr-0 mr-0">
-                    <div class="square mr-0 pt-0 mt-0 ml-0 pr-5 pl-0 "> </div>                      
+                    <div class="square mr-0 pt-0 mt-0 ml-0 pr-5 pl-0 "
+
+                      :style="{ backgroundImage: `url( '<http://localhost/' +  ${logo_src})` + '> !important;'  }"
+                    > </div>                      
                   </mdb-col>
                   <mdb-col md="8" class=" pr-1 pl-0 mr-2 text-lg-right text-ri  ght" > 
                     <h1 class=" font-weight-bold restName pr-md-1"> {{name}}</h1>
@@ -17,12 +22,12 @@
 
                     <!-- <p>{{categories_text}}</p> -->
                     <p class="res_info pr-md-1 mb-0 pb-0">{{getCategories()}}</p>
-                    <p  class = " res_info pt-0 mt-0" style="color:#adadad;"> خیابان جردن، نبش خیابان ایرج پلاک ۲</p>
+                    <p  class = " res_info pt-0 mt-0 ml-0 w-100" style="color:#adadad;">{{lineAdress }}</p>
 
                     
                   </mdb-col>
                 </mdb-row>
-                <mdb-row class="d-none d-sm-flex ml-0  " v-if="isopen ==true">
+                <mdb-row class="d-none d-sm-flex ml-0   flex-wrap" v-if="isopen ==true" c>
                   <mdb-col md="12" class=" res_button_area pr-0  pl-0 ml-2 mr-0 text-center">
                     <!-- <pre class="d-none d-sm-flex col-md-auto w-100 h-100" ></pre> -->
                     <button type="button" class=" res_button  btn mx-auto text-center mr-5 col-sm-6 col-md-9 col-lg-8">شروع سفارش</button>
@@ -38,8 +43,24 @@
 <script>
 
 
+
+
 import { mdbFooter, mdbContainer, mdbRow, mdbCol } from 'mdbvue';
-import StarRating from 'vue-star-rating'
+import StarRating from 'vue-star-rating';
+import axios from "axios";
+import Vue from "vue";
+
+
+Vue.config.productionTip = false;
+axios.defaults.baseURL = process.env.API_ENDPOINT;
+export const HTTP = axios.create({
+  // baseURL: `http://localhost:8888/api/restaurants`,
+  headers: {
+    Authorization: "Bearer {token}"
+  }
+});
+
+axios.defaults.crossDomain = true;
 
 export default {
   name: "restaurant",
@@ -54,7 +75,7 @@ export default {
           
       }
   },
-    props: ['name', 'lineAdress', "src", "categories", "avgRate", "isopen"],
+    props: ['name', 'lineAdress', "logo_src", "categories", "avgRate", "isopen"],
     computed:{
       classobj: function(){
         alert(this.isopen);
@@ -65,9 +86,31 @@ export default {
         }
       }
     },methods:{
+      navigate : function(){
+
+      alert("HI lets send a request")
+      
+      let req = "http://localhost:4000/api/restaurants/" + this.name;
+      alert(req)
+      axios.get(req ,{
+        useCredentails: true
+      })
+      .then(response =>{
+          // router.push({name:"restSearch"})
+        // window.location.href = "/restSearch?salam="
+        // alert(response.data )
+        var result = response.data
+        alert(result)
+        this.$router.push({ name: "RestaurantPage" , params:{restaurant: result}});
+
+
+          // this.errors.push(e);
+        });
+
+    },
       getCategories:function(){
         let result = "";
-        let arr = [{name :"برگر"},{name :"فست‌فود"},{name :"شیک"}]
+        let arr = this.categories;
         // for (let index = 0; index < this.categories.length; index++) {
           for(let index = 0 ; index < arr.length ; index ++){
           // const element = this.categories[index];
@@ -105,7 +148,7 @@ export default {
     background-position: center;
   border: 0.5px solid #adadad;  
   right:2px;    
-  background-image: url("../assets/images/downtown.jpeg");
+  /* background-image:""; */
   background-size: cover;
   background-repeat: no-repeat;
   border-radius:2px;
@@ -207,7 +250,7 @@ export default {
 }
 
 .restName{
-  font-size: 1.9em;
+  font-size: 15px;
 }
 
 

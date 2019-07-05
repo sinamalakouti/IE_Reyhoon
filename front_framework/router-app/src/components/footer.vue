@@ -8,7 +8,7 @@
           <!-- <hr class="text-uppercase mb-5 mt-3"/> -->
           <ul class="list-unstyled pr-0 text-right ">
             <li class="links text-right ml-4"  >مراقبت و محافظت از حساب کاربری و رمز عبور هر کاربر بر عهده کاربر است. ریحون سریعترین راه سفارش آنلاین غذا است. منوی عکس‌دار رستوران‌های اطرافتان را بر اساس مکان خود مشاهده کنید و سفارش دهید. </li>
-            <li><a class="text-right" href="#" style="color:rgb(75,121,209); float:right;">لیست رستوران‌ها</a></li>
+            <li><a class="text-right text-decoration-none pr-4" href="#" style="color:rgb(75,121,209); float:right;">لیست رستوران‌ها</a></li>
           </ul>
            
             
@@ -19,9 +19,9 @@
             <hr class="deep-purple accent-2 mb-2 mt-3 d-inline-block mx-auto " style="width: 160px ; height:2px; " />
           <h5 style="font-size:14px;" class=" mb-4 mt-0 font-weight-normal  ">تماس با ریحون</h5>
           <ul class="list-unstyled pr-0 text-right"  >
-            <li ><a  class="links text-right" href="#" >درباره‌ریحون</a></li>
-            <li><a class="links text-right" href="#!">تماس باما</a></li>
-            <li><a class="links text-right"  href="#!">وبلاگ ریحون</a></li>
+            <li ><a  class="links text-right text-decoration-none" href="#" >درباره‌ریحون</a></li>
+            <li><a class="links text-right text-decoration-none" href="#!">تماس باما</a></li>
+            <li><a class="links text-right text-decoration-none"  href="#!">وبلاگ ریحون</a></li>
             
           </ul>
           </div>
@@ -32,7 +32,7 @@
           <hr class=" accent-2 mb-2 mt-3 d-inline-block mx-auto text-right" style="width: 160px ; height:2px; backgroundColor: rgb(202,0,94);" />
           <h5 style="font-size:14px;" class="text-uppercase mb-4 mt-0 font-weight-normal text-right">رستوران‌ها</h5>
           <ul class="list-unstyled text-right pr-0">
-            <li class="text-right"><a class="links text-right"  href="#!">ثبت رستوران</a></li>
+            <li class="text-right"><a class="links text-right text-decoration-none"  href="#!">ثبت رستوران</a></li>
             
           </ul>
         </mdb-col>
@@ -41,9 +41,9 @@
           <hr class=" accent-2 mb-2 mt-3 d-inline-block mx-auto" style="width: 160px ; height:2px; backgroundColor:rgb(255,6,19)" />
           <h5 style="font-size:14px;" class="text-uppercase mb-4 mt-0 font-weight-normal text-right">پشتیبانی ریحون</h5>
           <ul class="list-unstyled pr-0 text-right">
-            <li><a class ="text-right" style="color:#A9A9A9;" href="#!">سوالات متداول</a></li>
-            <li><a  class="links text-right" href="#!">تماس با پشتیبانی</a></li>
-            <li><a  class="links text-right" href="#!">قوانین و مقررات</a></li>
+            <li><a class ="text-right text-decoration-none" style="color:#A9A9A9;" href="#!">سوالات متداول</a></li>
+            <li><a  class="links text-right text-decoration-none" href="#!">تماس با پشتیبانی</a></li>
+            <li><a  class="links text-right text-decoration-none" href="#!">قوانین و مقررات</a></li>
           </ul>
         </mdb-col>
         <!-- <hr class="clearfix w-100 d-md-none" /> -->
@@ -51,7 +51,7 @@
           <hr class=" accent-2 mb-2 mt-3 d-inline-block mx-auto" style="width: 160px ; height:2px; backgroundColor:rgb(255,195,9)" />
           <h5 style="font-size:14px;" class="text-uppercase mb-4 mt-0 font-weight-normal text-right">اپلیکیشن موبایل</h5>
           <ul class="list-unstyled pr-0 text-right">
-            <li><input class= "mb-1 footer-app1" type="text"></li>
+            <li><input class= "mb-1 footer-app1 " type="text"></li>
             <li><input class = "mb-1 footer-app2" type="text"></li>
             <li><input class = "mb-1 footer-app3" type="text"></li>
             

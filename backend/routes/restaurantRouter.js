@@ -17,9 +17,8 @@ var corsOptions = {
 const restaurantRouter = express.Router();
 
 restaurantRouter.use (function (req, res, next) {
-            console.log("khar khar khar");
 
-        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080/#/');
+        res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -35,7 +34,6 @@ restaurantRouter.use (function (req, res, next) {
     next();
 })
   .get("/", (req, res) => {
-      console.log("HI");
   
     if ( req.query.area && req.query.category){
         console.log("search by area and category");
@@ -71,6 +69,7 @@ restaurantRouter.use (function (req, res, next) {
        
     }else if ( req.query.area){
 
+            console.log(req.query.area)
 
         restaurant.model.find({'address.area': req.query.area}, (err, rests) => {
 
@@ -79,20 +78,43 @@ restaurantRouter.use (function (req, res, next) {
     }
 })
     .get('/area/:area', cors(corsOptions),  (req, res) => {
-        console.log("FUUdafdsffsa   CK")
 
-            
-            restaurant.model.find({'address.area': {$regex: req.params.area}}, 'address.area', (err, result)=>{
+            console.log("find area")
+            console.log(req.params.area)
+            restaurant.model.find({'address.area': {$regex: req.params.area}}, (err, result)=>{
                 if ( err)
                     res.send(err);
                 else{
                     let final_areas = [];
+
                     for( i in  result){
-                        if ( !final_areas.includes((result[i]['address'])['area']))
-                                final_areas.push((result[i]['address'])['addressLine']);
+                        // if ( !final_areas.includes((result[i]['address'])['area'])){
+                                
+                               if( (result[i]['address'])['area'] ){
+
+                                    let item = {
+                                        area :    (result[i]['address'])['area'],
+                                        city :   (result[i]['address'])['city'] 
+                                    }
+
+                                    final_areas.push(item)
+
+                               }
+
+                            // }
                     }
+
                     
-                    res.send(final_areas);
+                     // res.json(final_areas);
+                                                      // var myJSON = JSON.stringify(final_areas);
+                                                      // console.log("HI")
+                                                      // console.log(myJSON)
+                    let final_result = {
+                        items : final_areas
+                    }
+
+                    // final_result = JSON.stringify(final_result);
+                    res.json(final_areas);
 
                 }
                     
@@ -103,12 +125,15 @@ restaurantRouter.use (function (req, res, next) {
       
 
     .get('/:id', (req, res ) => {
+        console.log("getting the restaurant");
 
         restaurant.model.find({name: req.params.id}, (err, rests)=>
-        {   
+        {  
+
+            console.log(req.params.id)
            var  result = [];
             for ( i in rests){
-                
+                console.log("mishe inja beri?")
                  avg_score = 0; 
                  quantity = 0;
                  
@@ -157,6 +182,22 @@ restaurantRouter.use (function (req, res, next) {
 
     })
 
+
+    // .get("/remove", (req, res) =>{
+
+    //     restaurant.model.deleteMany({},(err, rest)=>{
+
+
+
+    //         console.log("remove success")
+
+             
+    //      });
+
+    //     res.send("success")
+
+
+    // })
     .post("/:id/comments", [check('author').isLength({min: 1}),
         check('quality').isNumeric({min:0 , max :5}).withMessage("Not a valid Number or not in range ( 0 - 5)"),
         check('packaging').isNumeric(),
@@ -192,9 +233,17 @@ restaurantRouter.use (function (req, res, next) {
       check("city").not().isEmpty(),
       check('area').not().isEmpty(),
       check('addressLine').not().isEmpty(), 
+      check('openningTime').not().isEmpty(), 
+      check('closingTime').not().isEmpty(), 
+      
 
   ],(req, res) =>   { 
+
+    console.log("now we are saving some restuarants:D")
+
+
     let new_address = new address.model();
+    console.log(req.body.area)
     new_address.area = req.body.area;
     new_address.city = req.body.city;
     new_address.id= req.body.name;

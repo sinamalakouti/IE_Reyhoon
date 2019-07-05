@@ -27,3 +27,4 @@ app.get("/", (req, res) =>{
 app.use("/api/restaurants", restaurantsRouter);
 
 app.listen(port, () => console.log(`listening on port ${port}!`));
+app.set('json spaces', 40);

@@ -7,23 +7,33 @@ import 'mdbvue/build/css/mdb.css';
 import mainPage from '@/components/Main'
 import restSearch from '@/components/restSearch'
 import myRestaurantpage from '@/components/restaurantPage'
+import VueRouter from 'vue-router';
 
-Vue.use(Router)
 Vue.use(BootstrapVue)
 Vue.component('v-select', vSelect)
+Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'mainPage',
-      component:myRestaurantpage
+      component:mainPage,
+      props: true
     },
 
     {
-      path: '/restSearch',
+      path: '/restSearch/:restaurants',
       name: 'restSearch',
-      component:restSearch
+      component:restSearch,
+    }
+
+    ,
+    {
+      path: '/RestaurantPage',
+      name: 'RestaurantPage',
+      component:myRestaurantpage,
+      props:true
     }
   ]
 })
