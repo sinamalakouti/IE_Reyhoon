@@ -6,7 +6,13 @@
       <div class="information_section mx-auto position-relative text-center">
         <mdb-container>
           <div class="text-center">
-            <div class="square mr-0 pt-0 mt-0 ml-0 pr-3 pl-0 mx-auto"></div>
+            <div class="square mr-0 pt-0 mt-0 ml-0 pr-0  pl-1 pb-1 mx-auto" 
+
+             :style="{ backgroundImage: `url(${aks})` }"  
+            >
+            <!-- <img  :src="aks"  class="w-100 h-100" alt=""> -->
+              
+            </div>
           </div>
           <mdb-row>
             <mdb-col md="12" sm="12" lg="12" class="pt-2">
@@ -50,8 +56,10 @@
           </mdb-row>
 
           <mdb-row>
-            <mdb-col col= "12" class="mt-4 pr-0 mr-0 ">
-              <tabBarItem style="backgroundColor:white;" ml-5  ></tabBarItem>
+            <mdb-col col="12" class="mt-4 pr-0 mr-0">
+             
+                <tabBarItem style="backgroundColor:white;" ml-5 @shouldScroll="doScroll"></tabBarItem>
+              
             </mdb-col>
           </mdb-row>
           <mdb-row>
@@ -60,9 +68,9 @@
         </mdb-container>
       </div>
     </div>
-    <div class="info_search mx-auto pt-3 ">
+    <div class="info_search mx-auto pt-3">
       <!-- Search form -->
-      <form class="form-inline md-form form-sm mt-0 active-cyan-2">
+      <form class="form-inline md-form form-sm mt-0 active-cyan-2" id="rest_menu_section">
         <span class="w-100 text-right">
           <i class="fas fa-search pl-0 ml-0" aria-hidden="true"></i>
           <input
@@ -81,56 +89,74 @@
       <mdb-container class="pl-0 pr-0 ml-5">
         <mdb-row class="pr-0">
           <!-- right side bar -->
-          <mdb-col md="2" sm="2" lg="2" xs="2">
-            <!-- <affix
+          <mdb-col col="2">
+            <affix
               class="sidebar-menu"
-              relative-element-selector=".food_section1"
-              style="width: 300px"
+              relative-element-selector="#foodContainer"
+              style="width: 100%"
             >
-              <a href="#markup-1">Markup 1</a>
-              <a href="#markup-2">Markup 2</a>
-              <a href="#markup-3">Markup 3</a>
-            </affix>-->
+                 <!-- <scrollactive class=" menu-list pr-2" style="border-right: 0.5px solid #dcdcdc"
+                   active-class="active"
+>
+                <div v-for="(row,index) in filter_food_items " :key="index" class="text-right pb-2" > -->
+                  <!-- <a class="text-decoration-none sidbar_element scrollactive-item " v-bind:href="set_scrollbar_href('id_' +index)" v-on:click="sidebar_scrol('id_' +index)"   >{{row.foodSet}}</a> -->
+                  <!-- <a href="" class="scrollactive-item"></a> -->
+
+                <!-- </div>
+                </scrollactive>        -->
+             
+            </affix>
             <!-- <section class="food_section1">
               <p>This is the #example-content section which the sidebar will be relatively affixed!</p>
             </section>-->
           </mdb-col>
           <!-- foods  -->
-          <mdb-col lg="10" md="10" sm="10" xs="10" class="food_section pl-0 ml-0 pr-0 mr-0">
+          <mdb-col
+            col="8"
+            lg="10"
+            md="10"
+            sm="10"
+            xs="10"
+            class="food_section pl-0 ml-0 pr-0 mr-0"
+            id="all_section"
+          >
             <mdb-container class="pr-0 mr-0">
-              <mdb-row v-for="(row,index) in filter_food_items " :key="index">
-                <mdb-col col="12">
-                  <div
-                    class="font-weight-bold text-right mb-3"
-                    style="font-size:20px;"
-                  >{{row.foodSet}}</div>
-                  <mdb-container class="pr-0 mr-0">
-                    <mdb-row>
-                      <mdb-col
-                        col="10"
-                        lg="6"
-                        md="12"
-                        sm="10"
-                        v-for="(food,index1) in row.foods"
-                        :key="index1"
-                      >
-                        <foodItem
-                          class="pb-3 mb-3 pl-lg-5 pl-md-5 pr-0 mr-0 ml-0"
-                          style="width:100%;  "
+              <div id="foodContainer">
+                <mdb-row v-for="(row,index) in filter_food_items " :key="index" id="foodis">
+                  <mdb-col col="12">
+                    <section
+                      class="font-weight-bold text-right mb-3"
+                      style="font-size:20px;"
+                      v-bind:id="'id_'+index"
 
-                          v-bind:name="food.name"
-                          v-bind:price="food.price"
-                          v-bind:description="food.description"
-                        ></foodItem>
-                      </mdb-col>
-                    </mdb-row>
-                  </mdb-container>
-                </mdb-col>
-              </mdb-row>
+                    >{{row.foodSet}}</section>
+                    <mdb-container class="pr-0 mr-0">
+                      <mdb-row>
+                        <mdb-col
+                          col="10"
+                          lg="6"
+                          md="12"
+                          sm="10"
+                          v-for="(food,index1) in row.foods"
+                          :key="index1"
+                        >
+                          <foodItem
+                            class="pb-3 mb-3 pl-lg-5 pl-md-5 pr-0 mr-0 ml-0"
+                            style="width:100%;  "
+                            v-bind:name="food.name"
+                            v-bind:price="food.price"
+                            v-bind:description="food.description"
+                          ></foodItem>
+                        </mdb-col>
+                      </mdb-row>
+                    </mdb-container>
+                  </mdb-col>
+                </mdb-row>
+              </div>
               <mdb-row class="mt-3">
                 <mdb-col md="12">
                   <section class="text-right">
-                    <mdb-container>
+                    <mdb-container id="rest_info_section">
                       <mdb-row>
                         <mdb-col md="12">
                           <div
@@ -150,9 +176,7 @@
                         <mdb-col col="12">
                           <span>
                             <i class="fas fa-map-marker-alt"></i>
-                            <p
-                              class="d-inline-block"
-                            >{{this.restaurant.address.addressLine}}</p>
+                            <p class="d-inline-block">{{this.restaurant.address.addressLine}}</p>
                           </span>
                         </mdb-col>
                       </mdb-row>
@@ -166,7 +190,9 @@
                           </div>
                           <span>
                             <p class="d-inline-block">همه روزه</p>
-                            <p class="d-inline-block float-left">از {{this.restaurant.openningTime}} ظهر تا {{this.restaurant.closingTime}} شب</p>
+                            <p
+                              class="d-inline-block float-left"
+                            >از {{this.restaurant.openningTime}} ظهر تا {{this.restaurant.closingTime}} شب</p>
                           </span>
                         </mdb-col>
                       </mdb-row>
@@ -182,6 +208,7 @@
                       <mdb-row>
                         <mdb-col md="12">
                           <div
+                            id="rest_menu_comment"
                             class="rest_info_section font-weight-bold text-right mb-3 pb-2"
                             style="font-size:20px; color:#696969"
                           >نظرات کاربران در مورد {{this.name}}</div>
@@ -211,7 +238,7 @@
                               v-bind:rtl="false"
                               v-bind:rounded-corners="false"
                               v-bind:increment="0.1"
-                              v-bind:rating= "avg_score"
+                              v-bind:rating="avg_score"
                               v-bind:star-size="20 "
                             ></star-rating>
                           </span>
@@ -314,7 +341,12 @@
                           <mdb-container>
                             <mdb-row v-for="(cmnt,index) in comments" :key="index">
                               <mdb-col col="12">
-                                <usrComment></usrComment>
+                                <usrComment
+                                  v-bind:author="cmnt.author"
+                                  v-bind:quality="cmnt.quality"
+                                  v-bind:text="cmnt.text"
+                                  
+                                ></usrComment>
                               </mdb-col>
                             </mdb-row>
                           </mdb-container>
@@ -335,10 +367,20 @@
   </div>
 </template>
 
+<script src="scroll-reaction.min.js"></script>
+		<script src="../dist/scroll-reaction-with-polyfill.min.js" type="text/javascript"></script>
 
 <script>
+  var reaction = new ScrollReaction();
+
+</script>
+
+<script>
+  // var reaction = new ScrollReaction();
+
 import { mdbFooter, mdbContainer, mdbRow, mdbCol } from "mdbvue";
 import { mdbIcon, mdbFormInline, mdbInput } from "mdbvue";
+import Scrollactive from 'vue-scrollactive';
 
 import StarRating from "vue-star-rating";
 
@@ -353,6 +395,10 @@ import foodItem from "@/components/foodItem";
 import tabBarItem from "@/components/myTabBar";
 import usrComment from "@/components/comment";
 import VueSlideBar from "vue-slide-bar";
+import VueScrollTo from "vue-scrollto";
+import { Affix } from "vue-affix";
+Vue.use(Scrollactive);
+// const ScrollReaction = require("scroll-reaction");
 
 export default {
   name: "restaurant",
@@ -369,50 +415,53 @@ export default {
     foodItem,
     tabBarItem,
     VueSlideBar,
-    usrComment
+    usrComment,
+    VueScrollTo,
+    Affix
   },
   data: function() {
     return {
+      aks2: "../assets/images/downtown.jpeg",
       restaurant: "",
       name: "",
-      avg_score: 2.2,
+      avg_score: 0,
       categories: [],
-      food_sets:{},
-      avg_quality:3.4,
-      avg_packaging:3.5,
-      avg_deliveryTime:4.2,
-      filter_menu :"",
+      food_sets: {},
+      avg_quality: 0,
+      avg_packaging: 0,
+      avg_deliveryTime:0,
+      filter_menu: "",
       loading: 4.7,
-      comments: [
-        {
-          author: "نادیا",
-          quality: 2.3,
-          packaging: 3.3,
-          deliveryTime: 2.5,
-          text: "مثل همیشه یکنواخت و معمولی",
-          createdAt: "۳ روز قبلو",
-          score: 3.3
-        },
-        {
-          author: "نادیا",
-          quality: 2.3,
-          packaging: 3.3,
-          deliveryTime: 2.5,
-          text: "مثل همیشه یکنواخت و معمولی",
-          createdAt: "۳ روز قبلو",
-          score: 3.3
-        },
+      comments: [],
+      //   {
+      //     author: "نادیا",
+      //     quality: 2.3,
+      //     packaging: 3.3,
+      //     deliveryTime: 2.5,
+      //     text: "مثل همیشه یکنواخت و معمولی",
+      //     createdAt: "۳ روز قبلو",
+      //     score: 3.3
+      //   },
+      //   {
+      //     author: "نادیا",
+      //     quality: 2.3,
+      //     packaging: 3.3,
+      //     deliveryTime: 2.5,
+      //     text: "مثل همیشه یکنواخت و معمولی",
+      //     createdAt: "۳ روز قبلو",
+      //     score: 3.3
+      //   },
 
-        {
-          author: "نادیا",
-          quality: 2.3,
-          packaging: 3.3,
-          deliveryTime: 2.5,
-          text: "مثل همیشه یکنواخت و معمولی",
-          createdAt: "۳ روز قبلو",
-          score: 3.3
-        }
-      ],
+      //   {
+      //     author: "نادیا",
+      //     quality: 2.3,
+      //     packaging: 3.3,
+      //     deliveryTime: 2.5,
+      //     text: "مثل همیشه یکنواخت و معمولی",
+      //     createdAt: "۳ روز قبلو",
+      //     score: 3.3
+      //   }
+      // ],
       food_items: []
       //   {
       //     foodSet: "میان وعده",
@@ -478,10 +527,11 @@ export default {
   created() {
     this.restaurant = this.$route.params.restaurant[0];
     this.name = this.restaurant.name;
-
+    this.avg_score = this.restaurant.averageRate;
+    this.comments = this.restaurant.comments;
+    this.calculate_avg_scores();
     this.setFoodSets();
     this.setFoodItems();
-    alert("rest i \t" + this.restaurant.name);
   },
   // props: {
 
@@ -528,41 +578,65 @@ export default {
 
   //   // ]
   // },
-  computed:{
+  computed: {
+    aks(){
+      return this.get_background_image_name(this.restaurant.logo);
+      // return require("../assets/images/downtown.jpeg");
+},
+    filter_food_items() {
+      let result = [];
 
-    filter_food_items(){
-      let result =[];
-      
-      for (let i = 0 ; i < this.food_items.length ;  i++){
-        
+      for (let i = 0; i < this.food_items.length; i++) {
         let item = this.food_items[i];
-      
-        let new_foods =[];
-        for ( let j = 0 ; j < item.foods.length ; j ++){
-          if(item.foods[j].name.includes(this.filter_menu)){
-              // alert("if\t"+ item.foods[j].name)
-              new_foods.push(item.foods[j]);
-          }else{
+
+        let new_foods = [];
+        for (let j = 0; j < item.foods.length; j++) {
+          if (item.foods[j].name.includes(this.filter_menu)) {
+            // alert("if\t"+ item.foods[j].name)
+            new_foods.push(item.foods[j]);
+          } else {
             // alert("else")
             // alert(this.filter_menu)
           }
         }
 
-        if ( new_foods.length >0){
-            result.push({
-              foodSet : item.foodSet,
-              foods : new_foods
-
-          })
+        if (new_foods.length > 0) {
+          result.push({
+            foodSet: item.foodSet,
+            foods: new_foods
+          });
         }
       }
 
       return result;
     }
-
   },
   methods: {
-    create_categories_text: function() {
+    calculate_avg_scores : function(){
+      
+      for(let i =0 ; i  < this.comments.length ; i ++){
+          this.avg_quality = this.avg_quality + this.comments[i].quality;
+          this.avg_packaging = this.avg_packaging + this.comments[i].packaging;
+          this.avg_deliveryTime = this.avg_deliveryTime + this.comments[i].deliveryTime;
+      }
+      this.avg_quality = (this.avg_quality / this.comments.length).toFixed(2);;
+      this.avg_packaging = (this.avg_packaging / this.comments.length).toFixed(2);
+      this.avg_deliveryTime = (this.avg_deliveryTime / this.comments.length).toFixed(2);
+      
+    },
+    set_scrollbar_href: function(foodset){
+      alert(foodset)
+        return "#"+foodset;
+    },
+    get_background_image_name:function(src){
+ 
+      var arr = src.split('/');
+ 
+      // return require(src)
+      return   require("../../../../backend/logos/"+ arr[arr.length-1]);
+      // return "<http://../assets/images/downtown.jpeg>"
+    }
+    ,create_categories_text: function() {
       this.categories = this.restaurant.categories;
       let text = "";
       for (let i = 0; i < this.categories.length; i++) {
@@ -575,15 +649,30 @@ export default {
       }
       return text;
     },
+    doScroll(value) {
+      if (value == 2) {
+        alert("scrolling to information section");
+        VueScrollTo.scrollTo("#rest_info_section");
+      } else if (value == 1) {
+        alert("scrolling to menu section");
+        VueScrollTo.scrollTo("#rest_menu_section");
+      } else if (value == 3) {
+        alert("scrolling to comment section");
+        VueScrollTo.scrollTo("#rest_menu_comment");
+      }
+    },
+    sidebar_scrol(id_name){
+      alert(id_name)
+      let str = "#"+id_name;
+      VueScrollTo.scrollTo(str);
+    }
 
+    ,
     setFoodSets: function() {
-      alert("HI");
       let foods = this.restaurant.foods;
-      alert(foods);
       var foodSets = {};
       for (let i = 0; i < foods.length; i++) {
         if (foodSets[foods[i].foodSet.trim()]) {
-          
           foodSets[foods[i].foodSet.trim()].push({
             name: foods[i].name.trim(),
             price: foods[i].price,
@@ -601,18 +690,15 @@ export default {
       }
       this.food_sets = foodSets;
     },
-    setFoodItems : function(){
-
+    setFoodItems: function() {
       for (const key in this.food_sets) {
         if (this.food_sets.hasOwnProperty(key)) {
           this.food_items.push({
-            foodSet :key,
-            foods : this.food_sets[key]
-          })
-          
+            foodSet: key,
+            foods: this.food_sets[key]
+          });
         }
       }
-
     }
   }
 };
@@ -622,6 +708,26 @@ export default {
 
 
 <style>
+
+ a.is-active{
+  color:red;
+}
+
+a.active{
+  color:blue;
+}
+
+
+a[data-scroll-active] {
+  color:greenyellow;
+}
+
+.sidbar_element{
+  color:#adadad;
+}
+.sidbar_element:hover{
+  color:#696969;
+}
 .userComment {
   color: #adadad;
 }
@@ -630,7 +736,7 @@ export default {
 }
 
 .Information_section_back {
-  background-image: url("../assets/images/iranian-food.jpeg");
+  background-image: url("/../assets/images/iranian-food.jpeg");
   background-repeat: no-repeat;
   background-size: 100% 50%;
   width: 100%;
@@ -711,7 +817,8 @@ box-shadow: 0 1px 0 0 #4dd0e1;
   border: 0.5px solid #adadad;
   right: 2px;
   top: -25px;
-  background-image: url("../assets/images/downtown.jpeg");
+  /* background-image: url("../../../../backend/logos/bamboo.jpeg"); */
+  /* background-image: url("../assets/images/downtown.jpeg"); */
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 2px;

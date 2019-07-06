@@ -96,7 +96,7 @@
               </div>
             </mdb-col>
 
-            <mdb-col md="1" class="pt-2 pb-2 pr-0 pl-0 d-none d-sm-block">
+            <mdb-col md="1" class="pt-2 pb-2 pr-0 pl-0 d-none  d-lg-block">
               <div class="search-icon text-right w-100 h-100 pd-0 pr-0 pl-0 mr-0"></div>
             </mdb-col>
           </mdb-row>

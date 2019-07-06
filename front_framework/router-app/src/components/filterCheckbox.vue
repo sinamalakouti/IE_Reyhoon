@@ -222,7 +222,7 @@ input[type="checkbox"][readonly] {
 @media screen and (max-width: 600px) {
   .checkbox {
     font-size: 12px;
-    color: red;
+    /* color: red; */
 
     /* display: inline; */
   }

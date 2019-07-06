@@ -1,6 +1,6 @@
 const express = require("express");
 const restaurant = require("../models/restaurant.js");
-const { check } = require('express-validator/check');
+// const { check } = require('express-validator/check');
 const comment = require("../models/userComment.js");
 const category = require("../models/category.js");
 const food = require("../models/food.js");
@@ -15,6 +15,8 @@ var corsOptions = {
 
 
 const restaurantRouter = express.Router();
+const { check, validationResult } = require('express-validator');
+
 
 restaurantRouter.use (function (req, res, next) {
 
@@ -68,7 +70,7 @@ restaurantRouter.use (function (req, res, next) {
 
        
     }else if ( req.query.area){
-
+                console.log("KHAE")
             console.log(req.query.area)
 
         restaurant.model.find({'address.area': req.query.area}, (err, rests) => {
@@ -126,18 +128,22 @@ restaurantRouter.use (function (req, res, next) {
 
     .get('/:id', (req, res ) => {
         console.log("getting the restaurant");
+                    console.log("KIIIIEEEEE")
 
         restaurant.model.find({name: req.params.id}, (err, rests)=>
         {  
 
-            console.log(req.params.id)
            var  result = [];
             for ( i in rests){
-                console.log("mishe inja beri?")
                  avg_score = 0; 
-                 quantity = 0;
-                 
+                 quantity = 0;  
+
+                 console.log("rest is \t" + rests[i]['name'])
+                
                 for( j in rests[i]['comments']){
+
+                    console.log("KIIIIEEEEE")
+
                     avg_score = avg_score + (rests[i]['comments'])[j]['quality'];
                     quantity = quantity + 1;
 
@@ -146,6 +152,7 @@ restaurantRouter.use (function (req, res, next) {
                 rests[i]['averageRate'] = avg_score;
                 result.push(rests[i]);
             }
+
             res.send(result);
 
 
@@ -198,11 +205,18 @@ restaurantRouter.use (function (req, res, next) {
 
 
     // })
-    .post("/:id/comments", [check('author').isLength({min: 1}),
+    .post("/:id/comments", [
         check('quality').isNumeric({min:0 , max :5}).withMessage("Not a valid Number or not in range ( 0 - 5)"),
-        check('packaging').isNumeric(),
-        check('deliveryTime').isNumeric(),
+        check('author').isLength({min: 1}),
+        check('packaging').isNumeric({max :5}).withMessage("Not a valid Number or not in range ( 0 - 5)"),
+        check('deliveryTime').isNumeric({min:0 , max :5}).withMessage("Not a valid Number or not in range ( 0 - 5)"),
         check('text').not().isEmpty().withMessage("Empty text")],(req, res) => {
+
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
             let cmntObj = new comment.model();
             cmntObj.id = req.body.id;
             cmntObj.author = req.body.author;
@@ -210,17 +224,61 @@ restaurantRouter.use (function (req, res, next) {
             cmntObj.packaging = req.body.packaging;
             cmntObj.deliveryTime = req.body.deliveryTime;
             cmntObj.text = req.body.text;
-            cmntObj.cmntObj = Date.now();
-            restaurant.model.find({name : req.params.id}, (err, result) =>{
+            cmntObj.created_at = Date.now();
+            console.log("hi \t" + req.body.text)
+            console.log("author is \t " + req.body.author)
+            restaurant.model.find({name : req.params.id}, (err, results) =>{
                 if(err)
                     res.send("FAILURE");
                 else
                 {
+                        var result = ""
+                    if ( results.length > 1)
+                         result = results[0]
+                     else
+                        result  = results
+                    try{
+                        var cond =  {'name' : req.params.id}   
+                        var update = {$push : {'comments' : cmntObj}}
+
+                    restaurant.model.update(cond, update )
+
                     result.comments.push(cmntObj);
+                    let avg_q = 0
+                    let avg_pack = 0
+                    let avg_del = 0 
+                    let counter = 0.0
+                    for ( i in result.comments){
+                        if (result.comments[i]['quality' ]){
+                            console.log(result.comments[i]['quality'])
+                            avg_q = avg_q + result.comments[i]['quality']
+                            // avg_pack = avg_pack + result.comments[i]['packaging']
+                            // avg_del = avg_del + result.comments[i]['deliveryTime']
+                            console.log(avg_q)
+                            console.log("in the loop  counter is   " + counter )
+                            counter = counter + 1
+                        }
+                    }
+                    console.log("counter is\t" + counter)
+                    console.log(avg_q / counter)
+                    result.averageRate = avg_q / counter
+                    // result.deliveryTime = avg_del / counter
+                    // result.packaging = avg_pack / counter
+                    result.save();
+                    results[1].comments = result.comments
+                    results[1].averageRate =result.averageRate
+                    results[1].save();
+
+// 
 
                     res.json({
                         message: "success"
                       });
+                }
+                catch(e){
+        console.log("eeeeeerrrrrrrrrrrrrrr")
+        console.log()
+    }
                 }
 
             });
@@ -235,11 +293,11 @@ restaurantRouter.use (function (req, res, next) {
       check('addressLine').not().isEmpty(), 
       check('openningTime').not().isEmpty(), 
       check('closingTime').not().isEmpty(), 
-      
+
 
   ],(req, res) =>   { 
 
-    console.log("now we are saving some restuarants:D")
+    console.log("now we are saving some یسشبیسشبسبشسبیسش:D")
 
 
     let new_address = new address.model();

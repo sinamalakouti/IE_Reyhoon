@@ -55,7 +55,9 @@ export default {
         this.tab_bar_2 = false;
         this.tab_bar_3 = true;
       }
+      this.$emit("shouldScroll",num);
     }
+    
     }
 }
 </script>

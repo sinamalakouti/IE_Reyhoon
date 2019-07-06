@@ -1,16 +1,16 @@
 <template>
   <mdb-container class="pt-5">
     <mdb-row>
-      <mdb-col col="2">
-        <p class="font-weight-bold d-inline-block">اکبر</p>
+      <mdb-col col="6">
+        <p class="font-weight-bold d-inline-block">{{this.author}}</p>
       </mdb-col>
-      <mdb-col col="10">
+      <mdb-col col="6">
         <span
           class="w-25 pr-md-1 star_rating float-left text-left"
           style="color:gold ; font-weight:bold"
         >
           <star-rating
-            cl
+            
             class="pr-0 float-left"
             v-bind:read-only="true"
             v-bind:show-rating="true"
@@ -18,7 +18,7 @@
             v-bind:rtl="false"
             v-bind:rounded-corners="false"
             v-bind:increment="0.1"
-            v-bind:rating="2.4"
+            v-bind:rating="this.quality"
             v-bind:star-size="20 "
           ></star-rating>
         </span>
@@ -31,7 +31,9 @@
           <span
             class="pr-3"
             style="color:rgb(144,144,144);"
-          >اش هیشکی واسه مهمون از اینجا غذا نگیره که آبروش میره تو جوب!!! کاش جرأت کنید توی منوی این رستوران!!!! بنویسید که قراره چه مزخرفی به مردم تحویل بدید. برنج خشک شده های ته قابلمه تون به همراه یذره جوجه خشک که معلوم نبود کی پخته شده رو ریختید توی ظرف پلاستیک و توی یه نایلون گره زده فرستادید!! پنج هزار تومن هم زیاد بود واسه این غذا. کسی مجبورتون نکرده این شغل رو داشته باشید. خجالت آوره بخدا</span>
+          >
+            {{this.text}}
+          </span>
         </span>
       </mdb-col>
     </mdb-row>
@@ -61,7 +63,7 @@ export default {
     mdbRow,
     mdbCol,
     StarRating
-  }
+  },props:['text','author', 'quality']
 };
 </script>
 

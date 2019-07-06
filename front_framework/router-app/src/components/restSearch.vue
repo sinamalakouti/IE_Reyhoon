@@ -17,13 +17,11 @@
       >{{this.selected_area}}</p>را دارند
     </div>
     <div class="text-right mt-3 mr-4 m mb-5" style>
-      <md-field
-        class="search-text text-right w-50 pt-0 pb-0 d-none d-sm-flex"
-      >
+      <md-field class="search-text text-right w-50 pt-0 pb-0 d-none d-sm-flex">
         <!-- <label>Voice</label> -->
-        <i class="fas fa-search pt-3 pl-2 pr-2 font-weight-lighter" style="color:gray"></i>
+        <!-- <i class="fas fa-search pt-3 pl-2 pr-2 font-weight-lighter" style="color:gray"></i> -->
         <!-- <md-icon class="fa fa-bars></md-icon> -->
-
+        <i class="fas fa-search pt-3 pl-2 pr-2" style="color:gray"></i>
         <div style="direction:rtl" class="text-right pt-0 pb-0">
           <label
             class="text-right float-right pr-5 pb-5 mb-5 pt-0"
@@ -40,8 +38,8 @@
 
     <div class="ml-0 mr-0">
       <div class="restLists pt-5 pr-0 mr-0 ml-0">
-        <mdb-container class="pr-0 mr-5 ml-0 pl-0">
-          <mdb-row>
+        <div class="d-flex pr-0 mr-5 ml-0 pl-0">
+          <mdb-row style="width:100%">
             <mdb-col col="4" class="pr-0 mr-0 mt-5 ml-0 col-lg-3 col-md-4 col-sm-4 col-xs-3 h-100">
               <MyFcheck
                 class="d-inline-block ml-0 pr-0 pt-0 pr-0 mr-0"
@@ -51,35 +49,31 @@
               />
             </mdb-col>
 
-            <mdb-col col="8" class="ml-0 pr-0 pl-5 mr-0 col-md-8 col-sm-8 col-lg-9 col-xs-9">
-              <mdb-container class="pr-5 ml-5 mt-5 mr-5 mr-sm-0 ml-lg-0" v-if="restaurants.length">
+            <mdb-col col="8" class="ml-0 pr-0 pl-5 mr-0 col-md-8 col-sm-8 col-lg-9 col-xs-9" style="width:100%">
+              <mdb-container class="pr-5 ml-5 mt-5 mr-5 mr-sm-0 ml-lg-0" v-if="restaurants.length" style="width:100%">
                 <mdb-row
                   v-for="(rows, index) in openRests_grid_result"
                   :key="index"
-                  class="flex-wrap"
+                  class=""
                 >
                   <mdb-col
-                    col="8"
+                    col="12"
                     md="10"
                     sm="10"
                     lg="4"
-                    class="pb-5 pr-1 w-100 flex-wrap"
+                    class="mb-5 pr-1 w-100 "
                     v-for="(rests, index2) in rows"
                     :key="index2"
-                      
-
                   >
                     <!-- TODO : rests avg score !!!!!  COMMENT !!!!! -->
                     <Myrest
                       class="h-100 pb-0 mb-0"
-                       
                       v-bind:name="rests.name"
-                      v-bind:avgRate="2.2"
+                      v-bind:avgRate="rests.averageRate"
                       v-bind:isopen="true"
                       v-bind:lineAdress="rests.address.addressLine"
                       v-bind:logo_src="rests.logo"
                       v-bind:categories="rests.categories"
-                      
                     ></Myrest>
                   </mdb-col>
                 </mdb-row>
@@ -92,10 +86,11 @@
                 >
                   <mdb-row v-for="(rows, index) in openRests_grid_result" :key="index">
                     <mdb-col
-                      md="4"
-                      ms="4"
+                      col="8"
+                      md="10"
+                      sm="10"
                       lg="4"
-                      class="pb-5"
+                      class="mb-5 pr-1 w-100 mr-0"
                       v-for="(rests, index2) in rows"
                       :key="index2"
                     >
@@ -104,6 +99,7 @@
                         v-bind:name="rests.name"
                         v-bind:avgRate="2.2"
                         v-bind:isopen="false"
+                        v-bind:logo_src="rests.logo"
                         v-bind:lineAdress="rests.address.addressLine"
                         v-bind:categories="rests.categories"
                       ></Myrest>
@@ -113,7 +109,7 @@
               </div>
             </mdb-col>
           </mdb-row>
-        </mdb-container>
+        </div>
       </div>
     </div>
 
@@ -172,7 +168,6 @@ export default {
   },
   // props :['title'],
   computed: {
-
     get_filter_list() {
       return this.filter_list;
     },
@@ -301,8 +296,8 @@ export default {
     this.selected_area = this.restaurants[0].address.area;
     this.filter_side_bar_filter = this.get_sidebar_filters();
   },
+
   methods: {
-    
     update_component: function() {
       this.filter_should_have = [];
       for (var key in this.filter_list) {
@@ -310,6 +305,17 @@ export default {
           this.filter_should_have.push(key);
         }
       }
+    },
+    // time
+    get_rest_status(rest){
+        var d = new Date();
+        var h = d.getHours();
+        let closeTime = rest.closingTime;
+        let openTime = rest.openningTime;
+        if (h <= closeTime && h>= openTime )
+          return true;
+        return false;
+
     },
     get_sidebar_filters: function() {
       var filters = {};
@@ -338,8 +344,7 @@ export default {
 
           col_gird = [];
         }
-        if (
-          this.restaurants[i].name.includes(this.filter_search_bar_value)        ) {
+        if (this.restaurants[i].name.includes(this.filter_search_bar_value)) {
           let cats = this.restaurants[i].categories;
           let flag = false;
           for (let j = 0; j < cats.length; j++) {
@@ -438,8 +443,6 @@ export default {
 .container {
   padding-left: 0% !important;
   margin-left: 20% !important;
-    /* margin-left: 20% !important; */
-
 }
 
 .close-rests {
